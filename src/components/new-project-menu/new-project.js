@@ -9,7 +9,7 @@ export function addProjectToDOM(project){
     projectsListElement.appendChild(newprojectElement);
 }
 
-export function shownewprojectMenuDOM(){
+export function showNewProjectMenuDOM(){
     if (!document.getElementById('newprojectPopup')) {
         document.body.insertAdjacentHTML('beforeend', newprojecthtml);
     }

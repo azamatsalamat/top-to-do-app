@@ -1,6 +1,6 @@
 import { Project } from "./project";
 import { addProjectToDOM } from "../components/new-project-menu/new-project";
-import { shownewprojectMenuDOM } from "../components/new-project-menu/new-project";
+import { showNewProjectMenuDOM } from "../components/new-project-menu/new-project";
 
 let projects = new Set();
 createProject("Today");
@@ -12,6 +12,6 @@ export function createProject(title){
     addProjectToDOM(project);
 }
 
-export function shownewprojectMenu(){
-    shownewprojectMenuDOM();
+export function showNewProjectMenu(){
+    showNewProjectMenuDOM();
 }

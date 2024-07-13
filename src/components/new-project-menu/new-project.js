@@ -10,12 +10,12 @@ export function addProjectToDOM(project){
 }
 
 export function showNewProjectMenuDOM(){
-    if (!document.getElementById('newprojectPopup')) {
+    if (!document.getElementById('newProjectPopup')) {
         document.body.insertAdjacentHTML('beforeend', newprojecthtml);
     }
     
     const overlay = document.getElementById('overlay');
-    const popup = document.getElementById('newprojectPopup');
+    const popup = document.getElementById('newProjectPopup');
     
     overlay.classList.add('active');
     popup.classList.add('active');
@@ -23,13 +23,13 @@ export function showNewProjectMenuDOM(){
     const cancelButton = popup.querySelector('button[type="button"]');
     cancelButton.addEventListener('click', hidenewprojectMenu);
 
-    const form = document.getElementById('newprojectForm');
+    const form = document.getElementById('newProjectForm');
     form.addEventListener('submit', submitnewproject);
 }
 
 function hidenewprojectMenu() {
     const overlay = document.getElementById('overlay');
-    const popup = document.getElementById('newprojectPopup');
+    const popup = document.getElementById('newProjectPopup');
     
     overlay.classList.remove('active');
     popup.classList.remove('active');

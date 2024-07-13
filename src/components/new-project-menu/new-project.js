@@ -1,12 +1,14 @@
 import newprojecthtml from './new-project.html';
 import newprojectcss from './new-project.css';
 import { createProject } from '../../script';
+import { showProjectTasks } from '../view-project/view-project';
 
 export function addProjectToDOM(project){
     const projectsListElement = document.getElementById("projectsList");
-    const newprojectElement = document.createElement("li");
-    newprojectElement.textContent = project.title;
-    projectsListElement.appendChild(newprojectElement);
+    const newProjectElement = document.createElement("li");
+    newProjectElement.textContent = project.title;
+    newProjectElement.onclick = () => showProjectTasks(project);
+    projectsListElement.appendChild(newProjectElement);
 }
 
 export function showNewProjectMenuDOM(){
@@ -21,13 +23,13 @@ export function showNewProjectMenuDOM(){
     popup.classList.add('active');
     
     const cancelButton = popup.querySelector('button[type="button"]');
-    cancelButton.addEventListener('click', hidenewprojectMenu);
+    cancelButton.addEventListener('click', hideNewProjectMenu);
 
     const form = document.getElementById('newProjectForm');
-    form.addEventListener('submit', submitnewproject);
+    form.addEventListener('submit', submitNewProject);
 }
 
-function hidenewprojectMenu() {
+function hideNewProjectMenu() {
     const overlay = document.getElementById('overlay');
     const popup = document.getElementById('newProjectPopup');
     
@@ -35,7 +37,7 @@ function hidenewprojectMenu() {
     popup.classList.remove('active');
 }
 
-function submitnewproject(event) {
+function submitNewProject(event) {
     event.preventDefault(); 
 
     const projectNameInput = document.getElementById('projectName');
@@ -43,7 +45,7 @@ function submitnewproject(event) {
 
     if (projectName) {
         createProject(projectName);
-        hidenewprojectMenu();
+        hideNewProjectMenu();
         projectNameInput.value = '';
     } else {
         alert('Please enter a project name.');

@@ -1,6 +1,9 @@
-export function showProjectFrom(project){
-    const projectsListElement = document.getElementById("projectsList");
-    const newprojectElement = document.createElement("li");
-    newprojectElement.textContent = project.title;
-    projectsListElement.appendChild(newprojectElement);
+import viewprojecthtml from './view-project.html';
+
+export function showProjectTasks(project){
+    const projectView = document.getElementsByClassName('project-view')[0];
+    projectView.innerHTML = '';
+
+    projectView.insertAdjacentHTML('beforeend', viewprojecthtml);
+    document.getElementById('project-title').textContent = project.title;
 }

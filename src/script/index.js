@@ -1,3 +1,4 @@
+import maincss from "../style/main.css";
 import { Project } from "./project";
 import { addProjectToDOM } from "../components/new-project-menu/new-project";
 import { showNewProjectMenuDOM } from "../components/new-project-menu/new-project";

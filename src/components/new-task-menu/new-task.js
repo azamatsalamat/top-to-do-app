@@ -1,6 +1,7 @@
 import newTaskHtml from './new-task.html';
 import { Priorities } from '../../script/task';
 import { createTask } from '../../script';
+import { showTaskDetails } from '../view-task/view-task';
 
 export function showNewTaskMenuDOM(){
     const newTaskMenu = document.getElementById('newTaskMenu');
@@ -36,14 +37,16 @@ function createNewTask(event){
     const desc = document.getElementById('newTaskDesc').value.trim();
     const deadline = document.getElementById('newTaskDeadline').value;
     const priority = document.getElementById('newTaskPriority').value;
-    createTask(projectName, title, desc, priority, deadline);
+    
+    const task = createTask(projectName, title, desc, priority, deadline);
 
-    addNewTaskToDom(title);
+    addNewTaskToDom(task);
 }
 
-export function addNewTaskToDom(title){
+export function addNewTaskToDom(task){
     const tasksList = document.getElementById('tasks-list');
     const newTaskElement = document.createElement('li');
-    newTaskElement.textContent = title;
+    newTaskElement.textContent = task.title;
+    newTaskElement.onclick = () => showTaskDetails(task);
     tasksList.appendChild(newTaskElement);
 }

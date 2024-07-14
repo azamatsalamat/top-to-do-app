@@ -9,6 +9,10 @@ let projects = [];
 createProject("Today");
 createProject("Inbox");
 
+export function getProjectByName(projectName){
+    return projects.find(x => x.title == projectName);
+}
+
 export function showNewProjectMenu(){
     showNewProjectMenuDOM();
 }
@@ -27,4 +31,5 @@ export function createTask(projectName, title, description, priority, deadline){
     const project = projects.find(x => x.title === projectName);
     const task = new Task(title, description, priority, deadline);
     project.addTask(task);
+    return task;
 }

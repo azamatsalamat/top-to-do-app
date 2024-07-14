@@ -1,5 +1,5 @@
 import newprojecthtml from './new-project.html';
-import newprojectcss from './new-project.css';
+import './new-project.css';
 import { createProject } from '../../script';
 import { showProjectTasks } from '../view-project/view-project';
 

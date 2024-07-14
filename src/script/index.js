@@ -33,3 +33,7 @@ export function createTask(projectName, title, description, priority, deadline){
     project.addTask(task);
     return task;
 }
+
+export function removeTaskFromProject(project, task){
+    project.removeTask(task);
+}

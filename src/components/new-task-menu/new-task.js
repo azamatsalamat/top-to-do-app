@@ -1,7 +1,8 @@
 import newTaskHtml from './new-task.html';
 import { Priorities } from '../../script/task';
-import { createTask } from '../../script';
+import { createTask, getProjectByName } from '../../script';
 import { showTaskDetails } from '../view-task/view-task';
+import { showProjectTasks } from '../view-project/view-project';
 
 export function showNewTaskMenuDOM(){
     const newTaskMenu = document.getElementById('newTaskMenu');
@@ -46,7 +47,22 @@ function createNewTask(event){
 export function addNewTaskToDom(task){
     const tasksList = document.getElementById('tasks-list');
     const newTaskElement = document.createElement('li');
-    newTaskElement.textContent = task.title;
-    newTaskElement.onclick = () => showTaskDetails(task);
+
+    const newTaskElementContent = document.createElement('span');
+    newTaskElementContent.textContent = task.title;
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.onclick = () => deleteTask(task);
+
+    newTaskElement.appendChild(newTaskElementContent);
+    newTaskElement.appendChild(deleteButton);
+
+    newTaskElementContent.onclick = () => showTaskDetails(task);
     tasksList.appendChild(newTaskElement);
+}
+
+function deleteTask(task){
+    const project = getProjectByName(document.getElementById('project-title').textContent);
+    project.removeTask(task);
+    showProjectTasks(project);
 }

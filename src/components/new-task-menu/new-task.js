@@ -36,6 +36,14 @@ function createNewTask(event){
     const desc = document.getElementById('newTaskDesc').value.trim();
     const deadline = document.getElementById('newTaskDeadline').value;
     const priority = document.getElementById('newTaskPriority').value;
-    console.log(priority);
     createTask(projectName, title, desc, priority, deadline);
+
+    addNewTaskToDom(title);
+}
+
+export function addNewTaskToDom(title){
+    const tasksList = document.getElementById('tasks-list');
+    const newTaskElement = document.createElement('li');
+    newTaskElement.textContent = title;
+    tasksList.appendChild(newTaskElement);
 }

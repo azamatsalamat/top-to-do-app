@@ -1,10 +1,10 @@
 export class Project{
     constructor(title){
         this.title = title;
-        this.tasks = new Set();
+        this.tasks = [];
     }
 
     addTask(task){
-        this.tasks.add(task);
+        this.tasks.push(task);
     }
 }
